@@ -1,4 +1,7 @@
-# Nested git repositories
+# Gnu.in Parent Repository .gitignore
+# This repository contains nested git repositories - they should NOT be tracked here
+
+# Nested git repositories (DO NOT TRACK)
 dot-github/
 findin-file-manager/
 gnu.in-cockpit/
@@ -7,7 +10,6 @@ gnu.in-gnosis-app/
 gnu.in-os/
 gnu.in-shell/
 gnu.in-syster-app/
-gnu.in.lab/
 gnuin-alaelestia-component/
 gnuin-hyprconf/
 hyprdynamicmonitors/
@@ -20,6 +22,10 @@ __pycache__/
 *.out
 *.err
 *.log
+.buildenv/
+build/
+dist/
+target/
 
 # IDE/Editor files
 .idea/
@@ -43,11 +49,6 @@ Thumbs.db
 # Node modules
 node_modules/
 
-# Build directories
-build/
-dist/
-target/
-
 # Cache directories
 .cache/
 
@@ -57,10 +58,32 @@ logs/
 
 # Local overrides
 *.override
-*.local
 
 # Test coverage
 coverage/
 
 # Dependency directories
 vendor/
+
+# QML files (DEPRECATED - do not track)
+*.qml
+
+# Qt/Build related
+*.pro
+*.pri
+Makefile*
+moc_*
+qrc_*
+ui_*
+
+# Python
+*.py[cod]
+*$py.class
+__pycache__/
+.pytest_cache/
+.coverage
+
+# Virtual environments
+venv/
+ENV/
+env/
