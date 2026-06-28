@@ -1,1 +1,0 @@
-# Auditor Install Working Directory

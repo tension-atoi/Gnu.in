@@ -1,1 +1,0 @@
-# Auditor Styling Working Directory

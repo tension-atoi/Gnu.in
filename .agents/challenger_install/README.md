@@ -1,1 +1,0 @@
-# Challenger Install Working Directory

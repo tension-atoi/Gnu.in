@@ -1,8 +1,0 @@
-# This is a LORE repository, not a Git repository
-# Do NOT initialize Git here
-
-*
-!.gitignore
-!README.md
-!USAGE.md
-!.lore/

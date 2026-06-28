@@ -1,1 +1,0 @@
-# Gnu.in Assets Repository\n\nThis LORE repository stores large binary assets, builds, datasets, and artifacts\nfor the Gnu.in project ecosystem.\n\nUse this for:\n- Compiled binaries\n- Datasets\n- Models\n- Build caches\n- Large media files\n\nDo NOT use this for source code (use Git for that).

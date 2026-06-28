@@ -1,1 +1,66 @@
+# Nested git repositories
+dot-github/
+findin-file-manager/
+gnu.in-cockpit/
+gnu.in-design-reference/
+gnu.in-gnosis-app/
+gnu.in-os/
+gnu.in-shell/
+gnu.in-syster-app/
+gnu.in.lab/
+gnuin-alaelestia-component/
+gnuin-hyprconf/
+hyprdynamicmonitors/
+tension-atoi/
+Syster.tool.in/
+
+# Build artifacts
+*.pyc
+__pycache__/
+*.out
+*.err
 *.log
+
+# IDE/Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Local configuration
+.env
+.env.local
+*.local
+
+# Node modules
+node_modules/
+
+# Build directories
+build/
+dist/
+target/
+
+# Cache directories
+.cache/
+
+# Logs
+*.log
+logs/
+
+# Local overrides
+*.override
+*.local
+
+# Test coverage
+coverage/
+
+# Dependency directories
+vendor/
