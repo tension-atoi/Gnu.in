@@ -1,0 +1,39 @@
+--- src/cockpit/views/github_panel.py
++++ src/cockpit/views/github_panel.py
+@@ -11,12 +11,13 @@
+     result_ready = Signal(dict)
+     error_occurred = Signal(str)
+ 
+-    def __init__(self, cwd: str) -> None:
++    def __init__(self, cwd: str, token: str = "") -> None:
+         super().__init__()
+         self.cwd = cwd
++        self.token = token
+ 
+     def run(self) -> None:
+         try:
+-            prs = GitHubClient.get_pull_requests(self.cwd)
+-            runs = GitHubClient.get_recent_runs(self.cwd)
++            prs = GitHubClient.get_pull_requests(self.cwd, token=self.token)
++            runs = GitHubClient.get_recent_runs(self.cwd, token=self.token)
+             self.result_ready.emit({"prs": prs, "runs": runs})
+         except Exception as e:
+             self.error_occurred.emit(str(e))
+@@ -62,7 +63,7 @@
+-    def refresh(self, cwd: str) -> None:
++    def refresh(self, cwd: str, token: str = "") -> None:
+         if not GitHubClient.is_installed():
+-            self.status_label.setText("gh CLI is not installed or available.")
++            self.status_label.setText("GitHub Client initialization failed.")
+             return
+ 
+         self.status_label.setText("Fetching...")
+         self.refresh_btn.setEnabled(False)
+         self.pr_list.clear()
+         self.actions_list.clear()
+ 
+-        self.worker = GitHubWorker(cwd)
++        self.worker = GitHubWorker(cwd, token)
+         self.worker.result_ready.connect(self._on_result)
+         self.worker.error_occurred.connect(self._on_error)
+         self.worker.start()

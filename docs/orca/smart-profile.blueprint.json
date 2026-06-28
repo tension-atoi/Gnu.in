@@ -1,0 +1,156 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-28T00:00:00-04:00",
+  "profileName": "GNU.IN Orca Smart Profile",
+  "orcaCli": "orca-ide",
+  "scope": {
+    "controlRoomPath": "/home/tension_atoi/Projects/Gnu.in",
+    "controlRoomKind": "folder",
+    "sourceAuthority": "nested component repos",
+    "livePromotionRequiresHumanApproval": true
+  },
+  "observations": {
+    "runtimeReady": true,
+    "automationsConfigured": 0,
+    "remoteEnvironmentsConfigured": 0,
+    "browserProfilesConfigured": ["Default"],
+    "agentStatusHooksEnabled": true,
+    "hermesShimHealthy": false,
+    "globalAgentDefaultsAreHighTrust": true,
+    "rootFolderIsValidGitRepo": false
+  },
+  "componentRepos": [
+    {
+      "name": "gnu.in-os",
+      "path": "/home/tension_atoi/Projects/Gnu.in/gnu.in-os",
+      "actualBranchAtAudit": "docs/operator-cutover-runbook",
+      "recommendedBaseRef": "origin/main",
+      "role": "source authority, release rail, engine"
+    },
+    {
+      "name": "gnu.in-shell",
+      "path": "/home/tension_atoi/Projects/Gnu.in/gnu.in-shell",
+      "actualBranchAtAudit": "feat/osd-rust-slice",
+      "recommendedBaseRef": "origin/feat/osd-rust-slice",
+      "role": "Quickshell/QML desktop shell"
+    },
+    {
+      "name": "gnu.in-gnosis-app",
+      "path": "/home/tension_atoi/Projects/Gnu.in/gnu.in-gnosis-app",
+      "actualBranchAtAudit": "live/ii-overhaul-template",
+      "recommendedBaseRef": "origin/live/ii-overhaul-template",
+      "role": "Gnosis app surface"
+    },
+    {
+      "name": "gnuin-hyprconf",
+      "path": "/home/tension_atoi/Projects/Gnu.in/gnuin-hyprconf",
+      "actualBranchAtAudit": "live/ii-overhaul-template",
+      "recommendedBaseRef": "review-required",
+      "role": "Rust authority layer for Hyprland settings"
+    },
+    {
+      "name": "gnu.in-design-reference",
+      "path": "/home/tension_atoi/Projects/Gnu.in/gnu.in-design-reference",
+      "actualBranchAtAudit": "main",
+      "recommendedBaseRef": "origin/main",
+      "role": "design tokens and reference specs"
+    },
+    {
+      "name": "gnuin-alaelestia-component",
+      "path": "/home/tension_atoi/Projects/Gnu.in/gnuin-alaelestia-component",
+      "actualBranchAtAudit": "docs/readme-refresh",
+      "recommendedBaseRef": "origin/main",
+      "role": "reusable QML/C++ visual component library"
+    },
+    {
+      "name": "gnu.in-syster-app",
+      "path": "/home/tension_atoi/Projects/Gnu.in/gnu.in-syster-app",
+      "actualBranchAtAudit": "docs/syster-app-docs-sync",
+      "recommendedBaseRef": "origin/main",
+      "role": "native QtQuick/QML coding app"
+    }
+  ],
+  "recommendedBrowserProfiles": [
+    {
+      "label": "GNU.IN Admin",
+      "scope": "isolated",
+      "purpose": "trusted logged-in control surfaces"
+    },
+    {
+      "label": "GitHub Review",
+      "scope": "isolated",
+      "purpose": "PR, issue, and CI inspection"
+    },
+    {
+      "label": "Research Scratch",
+      "scope": "isolated",
+      "purpose": "untrusted browsing and documentation lookup"
+    }
+  ],
+  "recommendedDisabledAutomations": [
+    {
+      "name": "GNU.IN daily control-room digest",
+      "trigger": "weekdays",
+      "time": "08:45",
+      "provider": "codex",
+      "workspace": "active",
+      "reuseSession": true,
+      "disabled": true,
+      "prompt": "Audit the GNU.IN control room. Report subrepo branch drift against CLAUDE.md, dirty trees, pending Orca worktrees, active terminals, failed background agents, and any live-promotion boundary risks. Do not modify files."
+    },
+    {
+      "name": "GNU.IN auth and integration hygiene",
+      "trigger": "weekly",
+      "day": 0,
+      "time": "10:00",
+      "provider": "codex",
+      "workspace": "active",
+      "reuseSession": true,
+      "disabled": true,
+      "prompt": "Audit Orca and agent integration health. Check that Orca runtime is ready, hook endpoint exists, auth files remain 0600, stale hook configs are documented, Hermes is callable, browser profiles exist, and no scheduled automation is enabled without explicit review. Do not print token values."
+    },
+    {
+      "name": "GNU.IN release boundary watcher",
+      "trigger": "daily",
+      "time": "17:30",
+      "provider": "claude",
+      "workspace": "active",
+      "reuseSession": true,
+      "disabled": true,
+      "prompt": "Read gnu.in-os/AGENTS.md and root CLAUDE.md. Summarize release, promotion, and live-target risks. Confirm no direct edits under ~/.local/share/gnuin-shell and no promote-latest run without explicit approval. Do not modify files."
+    }
+  ],
+  "sourceControlTemplateOverlays": {
+    "commitMessage": "Use GNU.IN conventions. Mention component scope first. Preserve live-promotion boundaries. Do not imply deployment or promotion unless the diff actually changes release metadata or promotion scripts. Include test/verification evidence when available.",
+    "pullRequest": "Create a reviewer-ready PR description for the touched GNU.IN component. Include purpose, files changed, verification commands and results, risk boundaries, and whether live promotion is explicitly out of scope. If the change touches gnu.in-os, mention component pinning and materialization impact.",
+    "branchName": "Generate a short branch name with one of: docs/, fix/, feat/, chore/, audit/. Include the component name when useful. Avoid claiming release/promotion unless explicitly requested."
+  },
+  "trustTiers": {
+    "trustedLocalRepair": {
+      "allowHighTrustAgentDefaults": true,
+      "allowedWhen": "known local source work in a clean component repo"
+    },
+    "untrustedInputOrAuth": {
+      "allowHighTrustAgentDefaults": false,
+      "requirements": [
+        "isolated browser profile",
+        "fresh worktree when mutating source",
+        "no token or cookie printing",
+        "manual review before changing auth or live runtime config"
+      ]
+    }
+  },
+  "cleanupTargets": [
+    "Repair Hermes shim missing venv interpreter before using Hermes automations.",
+    "Install or inventory-disable missing Grok, Copilot, Aider, Cursor, and Command-Code CLIs.",
+    "Register nested component repos instead of relying only on the parent folder.",
+    "Review duplicate SSH target intent and document owner/purpose.",
+    "Review world-readable Orca usage JSON files if local multi-user privacy matters."
+  ],
+  "manualApprovalBoundaries": [
+    "Do not edit ~/.local/share/gnuin-shell directly.",
+    "Do not run tools/promote-latest.sh without explicit approval.",
+    "Do not enable mutating scheduled automations before reviewing a dry run.",
+    "Do not paste secrets into prompts, reports, commits, or automations."
+  ]
+}

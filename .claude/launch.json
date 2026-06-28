@@ -1,0 +1,35 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "cathode-reliquary",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4137", "--directory", "algorithmic-art/cathode-reliquary"],
+      "port": 4137
+    },
+    {
+      "name": "ship-in-a-bottle",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4310", "--directory", "/home/tension_atoi/Projects/ship-in-a-bottle"],
+      "port": 4310
+    },
+    {
+      "name": "carte-michel",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4320", "--directory", "/home/tension_atoi/Projects/carte-michel/site"],
+      "port": 4320
+    },
+    {
+      "name": "carte-dist",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4321", "--directory", "/home/tension_atoi/Projects/carte-michel/dist"],
+      "port": 4321
+    },
+    {
+      "name": "shell-demo",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "4322", "--directory", "/home/tension_atoi/Projects/gnuin-shell-demo"],
+      "port": 4322
+    }
+  ]
+}

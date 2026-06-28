@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "version": "0.1.0",
+    "createdAt": "2026-06-22T22:29:02.981Z",
+    "modifiedAt": "2026-06-22T22:29:02.981Z",
+    "name": "Gnu.in",
+    "projectFormatVersion": 1
+  },
+  "compositions": {
+    "8bca0aaa-6afe-4cc0-8531-34b3ec3ca4eb": {
+      "id": "8bca0aaa-6afe-4cc0-8531-34b3ec3ca4eb",
+      "name": "Untitled Composition",
+      "resolution": {
+        "width": 1920,
+        "height": 1080
+      },
+      "frameRate": {
+        "numerator": 30,
+        "denominator": 1
+      },
+      "durationFrames": 150,
+      "layers": []
+    }
+  },
+  "layers": {},
+  "assets": {},
+  "editorState": {
+    "colorTokens": [
+      {
+        "id": "43cb5fc5-5263-460b-a392-a142381cbd98",
+        "name": "Blue",
+        "value": {
+          "r": 0.06847816984440017,
+          "g": 0.2581828529215958,
+          "b": 1,
+          "a": 1
+        },
+        "sortOrder": 0
+      },
+      {
+        "id": "77b9dab0-09d5-4bd8-b4c3-7b29f3ca213e",
+        "name": "Green",
+        "value": {
+          "r": 0.15292615199615017,
+          "g": 0.6307571363461468,
+          "b": 0.35153259950043936,
+          "a": 1
+        },
+        "sortOrder": 1
+      },
+      {
+        "id": "8b731803-6f8b-4c6e-9483-bdb0ddef2beb",
+        "name": "Purple",
+        "value": {
+          "r": 0.4072402119017367,
+          "g": 0.15292615199615017,
+          "b": 0.9130986517934192,
+          "a": 1
+        },
+        "sortOrder": 2
+      },
+      {
+        "id": "89fcc723-b10a-49e8-90dd-6ee48747adaa",
+        "name": "Yellow",
+        "value": {
+          "r": 0.6795424696330938,
+          "g": 0.45078578283822346,
+          "b": 0.07818742180518633,
+          "a": 1
+        },
+        "sortOrder": 3
+      },
+      {
+        "id": "a6e27b4c-f51b-4803-ac39-e8c0f8ff0853",
+        "name": "Red",
+        "value": {
+          "r": 0.8713671191987972,
+          "g": 0.12213877222960187,
+          "b": 0.11953842798834562,
+          "a": 1
+        },
+        "sortOrder": 4
+      }
+    ],
+    "colorTokenLinks": {},
+    "assetFolders": [],
+    "assetFolderAssignments": {},
+    "assetColorTags": {},
+    "assetMeta": {},
+    "guides": {},
+    "layerColorTags": {},
+    "curveColors": {},
+    "nodeGroups": [],
+    "nodePositions": {},
+    "session": {
+      "activeCompId": "8bca0aaa-6afe-4cc0-8531-34b3ec3ca4eb",
+      "activeLayerId": null,
+      "playheadTime": 0,
+      "previewRange": null
+    }
+  }
+}

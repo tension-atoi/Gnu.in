@@ -1,0 +1,230 @@
+diff --git a/gnu.in-cockpit/src/cockpit/views/main_window.py b/gnu.in-cockpit/src/cockpit/views/main_window.py
+index a123456..b654321 100644
+--- a/gnu.in-cockpit/src/cockpit/views/main_window.py
++++ b/gnu.in-cockpit/src/cockpit/views/main_window.py
+@@ -121,10 +121,7 @@ class Cockpit(QMainWindow):
+                 btn = QPushButton(action.label)
+                 btn.setToolTip(action.tip or action.cmd)
+                 if action.danger:
+-                    btn.setStyleSheet(
+-                        "QPushButton{background:#3a1c1c;border:1px solid #E5484D;}"
+-                        "QPushButton:hover{background:#4a2020;}"
+-                    )
++                    btn.setProperty("danger", True)
+                 btn.clicked.connect(lambda _=False, a=action: self.run(a))
+                 btn.installEventFilter(self)
+                 self.btn_docs[btn] = DOCS.get(action.label, INTRO_DOC)
+@@ -169,9 +166,6 @@ class Cockpit(QMainWindow):
+         v.addWidget(header)
+         self.doc = QTextBrowser()
+         self.doc.setOpenExternalLinks(False)
+-        self.doc.setStyleSheet(
+-            "QTextBrowser{background:#0F1115;color:#C7CDD4;border:1px solid #1A2026;padding:10px;}"
+-        )
+         self.doc.setMarkdown(INTRO_DOC)
+         v.addWidget(self.doc, 1)
+         return panel
+@@ -333,12 +327,100 @@ class Cockpit(QMainWindow):
+ 
+     def _apply_theme(self) -> None:
+         self.setStyleSheet(
+-            "QMainWindow,QWidget{background:#15191E;color:#D7DCE2;}"
+-            "QGroupBox{border:1px solid #1A2026;border-radius:8px;margin-top:8px;padding-top:8px;}"
+-            "QGroupBox::title{subcontrol-origin:margin;left:10px;color:#A1A6AD;}"
+-            "QPushButton{background:#1A2026;border:1px solid #2B3037;border-radius:6px;padding:6px;}"
+-            "QPushButton:hover{background:#222a32;}"
+-            "QPushButton:disabled{color:#555b62;border-color:#222;}"
+-            "QLineEdit,QComboBox{background:#0F1115;border:1px solid #2B3037;border-radius:5px;padding:4px;}"
+-            "QStatusBar{color:#A1A6AD;}"
++            "/* Global Application Styling */\n"
++            "QMainWindow, QWidget {\n"
++            "    background-color: #111516; /* mainSurface */\n"
++            "    color: #eef4f1; /* foreground */\n"
++            "    font-family: system-ui, -apple-system, sans-serif;\n"
++            "    font-size: 14px; /* textBase */\n"
++            "}\n"
++            "\n"
++            "/* Inputs & Selectors */\n"
++            "QLineEdit, QComboBox {\n"
++            "    background-color: #050606; /* surfaceUnder */\n"
++            "    color: #eef4f1; /* foreground */\n"
++            "    border: 1px solid #31393b; /* borderDefault */\n"
++            "    border-radius: 6px; /* radiusMd */\n"
++            "    padding: 4px 8px;\n"
++            "    font-size: 12px; /* textSm */\n"
++            "}\n"
++            "QLineEdit:focus, QComboBox:focus {\n"
++            "    border: 1px solid #62dba6; /* primary */\n"
++            "}\n"
++            "\n"
++            "/* Checkboxes */\n"
++            "QCheckBox {\n"
++            "    color: #a6b3af; /* foregroundSecondary */\n"
++            "    font-size: 12px; /* textSm */\n"
++            "    spacing: 6px;\n"
++            "}\n"
++            "QCheckBox::indicator {\n"
++            "    width: 16px;\n"
++            "    height: 16px;\n"
++            "    border: 1px solid #31393b; /* borderDefault */\n"
++            "    border-radius: 4px;\n"
++            "    background-color: #050606; /* surfaceUnder */\n"
++            "}\n"
++            "QCheckBox::indicator:checked {\n"
++            "    background-color: #62dba6; /* primary */\n"
++            "    border-color: #62dba6;\n"
++            "}\n"
++            "\n"
++            "/* Group Boxes */\n"
++            "QGroupBox {\n"
++            "    border: 1px solid #31393b; /* borderDefault */\n"
++            "    border-radius: 8px; /* radiusLg */\n"
++            "    margin-top: 12px; /* panelPadding */\n"
++            "    padding-top: 12px; /* panelPadding */\n"
++            "    font-weight: 600;\n"
++            "    font-size: 12px; /* textSm */\n"
++            "}\n"
++            "QGroupBox::title {\n"
++            "    subcontrol-origin: margin;\n"
++            "    subcontrol-position: top left;\n"
++            "    left: 12px; /* panelPadding */\n"
++            "    color: #a6b3af; /* foregroundSecondary */\n"
++            "    padding: 0 4px;\n"
++            "}\n"
++            "\n"
++            "/* Buttons */\n"
++            "QPushButton {\n"
++            "    background-color: #171b1d; /* elevatedPrimary */\n"
++            "    color: #eef4f1; /* foreground */\n"
++            "    border: 1px solid #31393b; /* borderDefault */\n"
++            "    border-radius: 6px; /* radiusMd */\n"
++            "    padding: 6px 12px;\n"
++            "    font-size: 12px; /* textSm */\n"
++            "    font-weight: 500;\n"
++            "}\n"
++            "QPushButton:hover {\n"
++            "    background-color: #202628; /* elevatedSecondary */\n"
++            "    border-color: #465154; /* borderHeavy */\n"
++            "}\n"
++            "QPushButton:pressed {\n"
++            "    background-color: #111516; /* mainSurface */\n"
++            "}\n"
++            "QPushButton:disabled {\n"
++            "    color: #7f8d89; /* foregroundTertiary */\n"
++            "    border-color: #31393b;\n"
++            "    background-color: #111516;\n"
++            "}\n"
++            "QPushButton[danger=\"true\"] {\n"
++            "    background-color: #2e1619; /* ~18% opacity of danger on mainSurface */\n"
++            "    border: 1px solid #ff6f7f; /* danger */\n"
++            "    color: #ff6f7f;\n"
++            "}\n"
++            "QPushButton[danger=\"true\"]:hover {\n"
++            "    background-color: #3f1a1e;\n"
++            "}\n"
++            "\n"
++            "/* Text & Log Panels */\n"
++            "QPlainTextEdit, QTextBrowser, QListWidget {\n"
++            "    background-color: #050606; /* surfaceUnder */\n"
++            "    color: #eef4f1; /* foreground */\n"
++            "    border: 1px solid #31393b; /* borderDefault */\n"
++            "    border-radius: 8px; /* radiusLg */\n"
++            "    padding: 12px; /* panelPadding */\n"
++            "}\n"
++            "QListWidget { border: none; padding: 0px; }\n"
++            "QStatusBar { color: #a6b3af; font-size: 11px; border-top: 1px solid #31393b; }\n"
+         )
+diff --git a/gnu.in-cockpit/src/cockpit/views/github_panel.py b/gnu.in-cockpit/src/cockpit/views/github_panel.py
+index d987654..e123456 100644
+--- a/gnu.in-cockpit/src/cockpit/views/github_panel.py
++++ b/gnu.in-cockpit/src/cockpit/views/github_panel.py
+@@ -1,4 +1,5 @@
+ from PySide6.QtCore import Qt, Signal, QThread
++from PySide6.QtGui import QColor
+ from PySide6.QtWidgets import (
+     QWidget, QVBoxLayout, QLabel, QPushButton, QListWidget, QListWidgetItem, QFrame
+ )
+@@ -32,35 +33,26 @@ class GitHubPanel(QFrame):
+     def __init__(self, parent=None) -> None:
+         super().__init__(parent)
+         self.setMinimumWidth(320)
+-        self.setStyleSheet(
+-            "QFrame{background:#0F1115;color:#C7CDD4;border:1px solid #1A2026;}"
+-        )
+         v = QVBoxLayout(self)
+         v.setContentsMargins(10, 10, 10, 10)
+ 
+         header = QLabel("GitHub Status")
+-        header.setStyleSheet("font-weight:600; font-size: 14px; border:none;")
++        header.setStyleSheet("font-weight:600; font-size: 14px; border:none; color:#eef4f1;")
+         v.addWidget(header)
+ 
+         self.refresh_btn = QPushButton("Refresh")
+-        self.refresh_btn.setStyleSheet(
+-            "QPushButton{background:#1A2026;border:1px solid #2B3037;border-radius:6px;padding:4px;}"
+-            "QPushButton:hover{background:#222a32;}"
+-        )
+         v.addWidget(self.refresh_btn)
+ 
+         self.status_label = QLabel("Ready")
+-        self.status_label.setStyleSheet("color:#7C828A; border:none;")
++        self.status_label.setStyleSheet("color:#a6b3af; border:none;")
+         v.addWidget(self.status_label)
+ 
+-        v.addWidget(QLabel("Pull Requests", styleSheet="font-weight:600; margin-top:10px; border:none;"))
++        v.addWidget(QLabel("Pull Requests", styleSheet="font-weight:600; margin-top:10px; border:none; color:#eef4f1;"))
+         self.pr_list = QListWidget()
+-        self.pr_list.setStyleSheet("border:none; background:#0F1115;")
+         v.addWidget(self.pr_list, 1)
+ 
+-        v.addWidget(QLabel("Recent Actions", styleSheet="font-weight:600; margin-top:10px; border:none;"))
++        v.addWidget(QLabel("Recent Actions", styleSheet="font-weight:600; margin-top:10px; border:none; color:#eef4f1;"))
+         self.actions_list = QListWidget()
+-        self.actions_list.setStyleSheet("border:none; background:#0F1115;")
+         v.addWidget(self.actions_list, 1)
+ 
+         self.worker = None
+@@ -113,9 +105,9 @@ class GitHubPanel(QFrame):
+             item = QListWidgetItem(f"[{status.upper()}] {run.get('name') or 'Unnamed Workflow'}")
+             item.setToolTip(run.get('url', ''))
+             if status == "success":
+-                item.setForeground(Qt.GlobalColor.green)
++                item.setForeground(QColor("#62dba6"))
+             elif status == "failure":
+-                item.setForeground(Qt.GlobalColor.red)
++                item.setForeground(QColor("#ff6f7f"))
+             self.actions_list.addItem(item)
+ 
+     def _on_error(self, err: str) -> None:
+diff --git a/gnu.in-cockpit/src/cockpit/views/log_view.py b/gnu.in-cockpit/src/cockpit/views/log_view.py
+index b654321..c987654 100644
+--- a/gnu.in-cockpit/src/cockpit/views/log_view.py
++++ b/gnu.in-cockpit/src/cockpit/views/log_view.py
+@@ -5,12 +5,12 @@ class LogView(QPlainTextEdit):
+     """Read-only, monospace, dark log with simple colour roles."""
+ 
+     COLORS = {
+-        "cmd": "#FF8E40",      # accent — the command header
+-        "out": "#D7DCE2",      # stdout
+-        "err": "#E5707A",      # stderr
+-        "ok": "#8DA982",       # success exit
+-        "fail": "#E5484D",     # failure exit
+-        "muted": "#7C828A",
++        "cmd": "#62dba6",      # primary
++        "out": "#eef4f1",      # foreground
++        "err": "#ff6f7f",      # danger
++        "ok": "#62dba6",       # primary
++        "fail": "#ff6f7f",     # danger
++        "muted": "#7f8d89",    # foregroundTertiary
+     }
+ 
+     def __init__(self) -> None:
+@@ -20,9 +20,6 @@ class LogView(QPlainTextEdit):
+         f.setPointSize(10)
+         self.setFont(f)
+         self.setStyleSheet(
+-            "QPlainTextEdit{background:#0F1115;color:#D7DCE2;border:1px solid #1A2026;}"
++            "QPlainTextEdit { border-radius: 8px; }"
+         )
+         self.setMaximumBlockCount(10000)
+ 

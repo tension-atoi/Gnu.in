@@ -1,0 +1,7 @@
+--- pyproject.toml
++++ pyproject.toml
+@@ -11,3 +11,4 @@
+ dependencies = [
+     "PySide6>=6.6.0",
++    "requests",
+ ]

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=GNU.IN Pipeline Cockpit
+Comment=A fast local Qt6 control panel for GNU.IN multi-repo pipeline
+Exec=@PREFIX@/bin/gnuin-cockpit
+Icon=gnuin-cockpit
+Terminal=false
+Type=Application
+Categories=Development;Utility;
+Keywords=Git;Pipeline;Status;
+StartupNotify=true
+# Enforce native Qt styling via Wayland where applicable
+Environment=QT_QPA_PLATFORM=wayland;QT_STYLE_OVERRIDE=kvantum
