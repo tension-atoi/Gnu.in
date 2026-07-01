@@ -1,0 +1,111 @@
+{
+  "count": 4,
+  "generated_at": "2026-07-01T03:43:08Z",
+  "items": [
+    {
+      "active": true,
+      "canonical": true,
+      "created": "2026-06-01",
+      "doc_id": "rttc-gnosis-app-2026-06-01",
+      "edit_scope": "production",
+      "kind": "component",
+      "last_activity": "2026-06-02",
+      "last_activity_source": "updated",
+      "mtime": "2026-06-10",
+      "name": "GnosisApp.rttc.md",
+      "path": "gnu.in-shell/components/GnosisApp.rttc.md",
+      "recent": false,
+      "source_ref": "[[02-research/notes/rttc-protocol-spec.md]]",
+      "status": "active",
+      "status_source": "frontmatter.status",
+      "subtype": "research-note",
+      "tags": [
+        "research/rttc",
+        "project/gnuin",
+        "type/architecture",
+        "status/active"
+      ],
+      "taxonomy": "components.root",
+      "updated": "2026-06-02"
+    },
+    {
+      "active": true,
+      "canonical": true,
+      "created": "2026-06-01",
+      "doc_id": "rttc-gnosis-tracker-overlay-2026-06-01",
+      "edit_scope": "production",
+      "kind": "component",
+      "last_activity": "2026-06-01",
+      "last_activity_source": "updated",
+      "mtime": "2026-06-10",
+      "name": "GnosisTrackerOverlay.rttc.md",
+      "path": "gnu.in-shell/components/GnosisTrackerOverlay.rttc.md",
+      "recent": false,
+      "source_ref": "[[02-research/notes/rttc-protocol-spec.md]]",
+      "status": "active",
+      "status_source": "frontmatter.status",
+      "subtype": "research-note",
+      "tags": [
+        "research/rttc",
+        "project/gnuin",
+        "type/architecture",
+        "status/active"
+      ],
+      "taxonomy": "components.root",
+      "updated": "2026-06-01"
+    },
+    {
+      "active": false,
+      "canonical": false,
+      "created": "2026-05-16",
+      "doc_id": "rttc-cmp-context-menu-host",
+      "edit_scope": "production",
+      "kind": "deprecated",
+      "last_activity": "2026-05-16",
+      "last_activity_source": "created",
+      "mtime": "2026-06-07",
+      "name": "ContextMenuHost.rttc.md",
+      "path": "gnu.in-shell/components/ContextMenuHost.rttc.md",
+      "recent": false,
+      "source_ref": "shell-v2/components/ContextMenuHost.qml",
+      "status": "superseded",
+      "status_source": "frontmatter.status",
+      "subtype": "research-note",
+      "tags": [
+        "research/rttc-shell-spec",
+        "component/context-menu-host",
+        "status/draft",
+        "source/agent"
+      ],
+      "taxonomy": "components.root",
+      "updated": "-"
+    },
+    {
+      "active": true,
+      "canonical": false,
+      "created": "2026-05-16",
+      "doc_id": "",
+      "edit_scope": "production",
+      "kind": "surface",
+      "last_activity": "2026-05-16",
+      "last_activity_source": "updated",
+      "mtime": "2026-06-04",
+      "name": "LockOverlay.rttc.md",
+      "path": "gnu.in-shell/components/LockOverlay.rttc.md",
+      "recent": false,
+      "source_ref": "[[shell-v2/components/LockOverlay.qml]]",
+      "status": "validated",
+      "status_source": "frontmatter.status",
+      "subtype": "protocol",
+      "tags": [
+        "shell-v2",
+        "rttc",
+        "component",
+        "lock-overlay"
+      ],
+      "taxonomy": "components.root",
+      "updated": "2026-05-16"
+    }
+  ],
+  "taxonomy": "components.root"
+}

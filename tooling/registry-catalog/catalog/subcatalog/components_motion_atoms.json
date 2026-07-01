@@ -1,0 +1,28 @@
+{
+  "count": 1,
+  "generated_at": "2026-07-01T03:43:08Z",
+  "items": [
+    {
+      "active": false,
+      "canonical": false,
+      "created": "-",
+      "doc_id": "",
+      "edit_scope": "draft",
+      "kind": "atom",
+      "last_activity": "-",
+      "last_activity_source": "missing",
+      "mtime": "2026-06-10",
+      "name": "README.rttc.md",
+      "path": "gnu.in-shell/components/motion/atoms/README.rttc.md",
+      "recent": false,
+      "source_ref": "",
+      "status": "draft",
+      "status_source": "frontmatter.status",
+      "subtype": "research-note",
+      "tags": [],
+      "taxonomy": "components.motion.atoms",
+      "updated": "-"
+    }
+  ],
+  "taxonomy": "components.motion.atoms"
+}
